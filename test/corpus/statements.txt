@@ -6,13 +6,12 @@ RETURN n
 ---
 (cypher
   (query
-    (reading_clause
-      (match
-        (pattern
-          (pattern_element
-            (node_pattern
-              (variable
-                (identifier)))))))
+    (match
+      (pattern
+        (pattern_element
+          (node_pattern
+            (variable
+              (identifier))))))
   (return
     (projection_body
       (projection_items
@@ -30,22 +29,21 @@ RETURN user.name, friend.name
 ---
 (cypher
   (query
-    (reading_clause
-      (match
-        (pattern
-          (pattern_element
+    (match
+      (pattern
+        (pattern_element
+          (node_pattern
+            (variable
+              (identifier)))
+          (pattern_element_chain
+            (relationship_detail
+              (relationship_types
+                (rel_type_name
+                  (schema_name
+                    (identifier)))))
             (node_pattern
               (variable
-                (identifier)))
-            (pattern_element_chain
-              (relationship_detail
-                (relationship_types
-                  (rel_type_name
-                    (schema_name
-                      (identifier)))))
-              (node_pattern
-                (variable
-                  (identifier))))))))
+                (identifier)))))))
   (return
     (projection_body
       (projection_items
@@ -79,94 +77,90 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
 ---
 (cypher
   (query
-    (updating_clause
-      (create
-        (pattern
-          (pattern_element
+    (create
+      (pattern
+        (pattern_element
+          (node_pattern
+            (variable
+              (identifier))
+            (node_labels
+              (node_label
+                (label_name
+                  (schema_name
+                    (identifier)))))
+            (properties
+              (map_literal
+                (property_key_name
+                  (schema_name
+                    (identifier)))
+                (expression
+                  (property_or_labels_expression
+                    (atom
+                      (literal
+                        (string_literal)))))))))))
+    (create
+      (pattern
+        (pattern_element
+          (node_pattern
+            (variable
+              (identifier))
+            (node_labels
+              (node_label
+                (label_name
+                  (schema_name
+                    (identifier)))))
+            (properties
+              (map_literal
+                (property_key_name
+                  (schema_name
+                    (identifier)))
+                (expression
+                  (property_or_labels_expression
+                    (atom
+                      (literal
+                        (string_literal)))))))))))
+    (create
+      (pattern
+        (pattern_element
+          (node_pattern
+            (variable
+              (identifier))
+            (node_labels
+              (node_label
+                (label_name
+                  (schema_name
+                    (identifier)))))
+            (properties
+              (map_literal
+                (property_key_name
+                  (schema_name
+                    (identifier)))
+                (expression
+                  (property_or_labels_expression
+                    (atom
+                      (literal
+                        (string_literal)))))))))))
+    (create
+      (pattern
+        (pattern_element
+          (node_pattern
+            (variable
+              (identifier)))
+          (pattern_element_chain
+            (relationship_detail
+              (relationship_types
+                (rel_type_name
+                  (schema_name
+                    (identifier)))))
             (node_pattern
               (variable
-                (identifier))
-              (node_labels
-                (node_label
-                  (label_name
-                    (schema_name
-                      (identifier)))))
-              (properties
-                (map_literal
-                  (property_key_name
-                    (schema_name
-                      (identifier)))
-                  (expression
-                    (property_or_labels_expression
-                      (atom
-                        (literal
-                          (string_literal))))))))))))
-    (updating_clause
-      (create
-        (pattern
-          (pattern_element
+                (identifier))))
+          (pattern_element_chain
+            (relationship_detail
+              (relationship_types
+                (rel_type_name
+                  (schema_name
+                    (identifier)))))
             (node_pattern
               (variable
-                (identifier))
-              (node_labels
-                (node_label
-                  (label_name
-                    (schema_name
-                      (identifier)))))
-              (properties
-                (map_literal
-                  (property_key_name
-                    (schema_name
-                      (identifier)))
-                  (expression
-                    (property_or_labels_expression
-                      (atom
-                        (literal
-                          (string_literal))))))))))))
-    (updating_clause
-      (create
-        (pattern
-          (pattern_element
-            (node_pattern
-              (variable
-                (identifier))
-              (node_labels
-                (node_label
-                  (label_name
-                    (schema_name
-                      (identifier)))))
-              (properties
-                (map_literal
-                  (property_key_name
-                    (schema_name
-                      (identifier)))
-                  (expression
-                    (property_or_labels_expression
-                      (atom
-                        (literal
-                          (string_literal))))))))))))
-    (updating_clause
-      (create
-        (pattern
-          (pattern_element
-            (node_pattern
-              (variable
-                (identifier)))
-            (pattern_element_chain
-              (relationship_detail
-                (relationship_types
-                  (rel_type_name
-                    (schema_name
-                      (identifier)))))
-              (node_pattern
-                (variable
-                  (identifier))))
-            (pattern_element_chain
-              (relationship_detail
-                (relationship_types
-                  (rel_type_name
-                    (schema_name
-                      (identifier)))))
-              (node_pattern
-                (variable
-                  (identifier))))))))))
+                (identifier)))))))))

@@ -4,17 +4,17 @@ module.exports = grammar({
     cypher: $ => seq($.query, optional(";")),
     query: $ => choice(
       seq(
-        $.reading_clause,
+        $._reading_clause,
         $.return
       ),
       seq(
-        repeat($.reading_clause),
-        repeat1($.updating_clause),
+        repeat($._reading_clause),
+        repeat1($._updating_clause),
         optional($.return)
       )
     ),
 
-    reading_clause: $ => choice(
+    _reading_clause: $ => choice(
       $.match
     ),
     match: $ => seq(
@@ -92,7 +92,7 @@ module.exports = grammar({
       "}"
     ),
 
-    updating_clause: $ => choice(
+    _updating_clause: $ => choice(
       $.create
     ),
     create: $ => seq("CREATE", $.pattern),
