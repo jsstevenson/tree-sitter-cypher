@@ -39,8 +39,7 @@ RETURN user.name, friend.name
             (relationship_detail
               (relationship_types
                 (rel_type_name
-                  (schema_name
-                    (identifier)))))
+                  (identifier))))
             (node_pattern
               (variable
                 (identifier)))))))
@@ -55,8 +54,7 @@ RETURN user.name, friend.name
                   (identifier)))
               (property_lookup
                 (property_key_name
-                  (schema_name
-                    (identifier)))))))
+                  (identifier))))))
         (projection_item
           (expression
             (property_or_labels_expression
@@ -65,8 +63,7 @@ RETURN user.name, friend.name
                   (identifier)))
               (property_lookup
                 (property_key_name
-                  (schema_name
-                    (identifier))))))))))))
+                  (identifier)))))))))))
 ==================
 Create statement and node match properties
 ==================
@@ -86,13 +83,11 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
             (node_labels
               (node_label
                 (label_name
-                  (schema_name
-                    (identifier)))))
+                  (identifier))))
             (properties
               (map_literal
                 (property_key_name
-                  (schema_name
-                    (identifier)))
+                  (identifier))
                 (expression
                   (property_or_labels_expression
                     (atom
@@ -107,13 +102,11 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
             (node_labels
               (node_label
                 (label_name
-                  (schema_name
-                    (identifier)))))
+                  (identifier))))
             (properties
               (map_literal
                 (property_key_name
-                  (schema_name
-                    (identifier)))
+                  (identifier))
                 (expression
                   (property_or_labels_expression
                     (atom
@@ -128,13 +121,11 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
             (node_labels
               (node_label
                 (label_name
-                  (schema_name
-                    (identifier)))))
+                  (identifier))))
             (properties
               (map_literal
                 (property_key_name
-                  (schema_name
-                    (identifier)))
+                  (identifier))
                 (expression
                   (property_or_labels_expression
                     (atom
@@ -150,8 +141,7 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
             (relationship_detail
               (relationship_types
                 (rel_type_name
-                  (schema_name
-                    (identifier)))))
+                  (identifier))))
             (node_pattern
               (variable
                 (identifier))))
@@ -159,8 +149,7 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
             (relationship_detail
               (relationship_types
                 (rel_type_name
-                  (schema_name
-                    (identifier)))))
+                  (identifier))))
             (node_pattern
               (variable
                 (identifier)))))))))

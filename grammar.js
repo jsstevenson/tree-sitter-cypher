@@ -57,7 +57,7 @@ module.exports = grammar({
         )
       )
     ),
-    rel_type_name: $ => $.schema_name,
+    rel_type_name: $ => $._schema_name,
     node_pattern: $ => seq(
       "(",
       optional($.variable),
@@ -67,7 +67,7 @@ module.exports = grammar({
     ),
     node_labels: $ => seq($.node_label, repeat($.node_label)),
     node_label: $ => seq(":", $.label_name),
-    label_name: $ => $.schema_name,
+    label_name: $ => $._schema_name,
     properties: $ => choice(
       $.map_literal,
       // $.parameter
@@ -118,8 +118,8 @@ module.exports = grammar({
       repeat($.property_lookup),
     ),
     property_lookup: $ => seq(".", $.property_key_name),
-    property_key_name: $ => $.schema_name,
-    schema_name: $ => $._symbolic_name,
+    property_key_name: $ => $._schema_name,
+    _schema_name: $ => $._symbolic_name,
     atom: $ => choice(
       $.literal,
       $.variable
