@@ -33,8 +33,8 @@ module.exports = grammar({
         ")"
       )
     ),
-    pattern_element_chain: $ => seq($.relationship_pattern, $.node_pattern),
-    relationship_pattern: $ => choice(
+    pattern_element_chain: $ => seq($._relationship_pattern, $.node_pattern),
+    _relationship_pattern: $ => choice(
       seq("<-", optional($.relationship_detail), "->"),
       seq("<-", optional($.relationship_detail), "-"),
       seq("-", optional($.relationship_detail), "->"),

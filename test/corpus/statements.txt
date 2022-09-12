@@ -38,12 +38,11 @@ RETURN user.name, friend.name
               (variable
                 (identifier)))
             (pattern_element_chain
-              (relationship_pattern
-                (relationship_detail
-                  (relationship_types
-                    (rel_type_name
-                      (schema_name
-                        (identifier))))))
+              (relationship_detail
+                (relationship_types
+                  (rel_type_name
+                    (schema_name
+                      (identifier)))))
               (node_pattern
                 (variable
                   (identifier))))))))
@@ -154,22 +153,20 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
               (variable
                 (identifier)))
             (pattern_element_chain
-              (relationship_pattern
-                (relationship_detail
-                  (relationship_types
-                    (rel_type_name
-                      (schema_name
-                        (identifier))))))
+              (relationship_detail
+                (relationship_types
+                  (rel_type_name
+                    (schema_name
+                      (identifier)))))
               (node_pattern
                 (variable
                   (identifier))))
             (pattern_element_chain
-              (relationship_pattern
-                (relationship_detail
-                  (relationship_types
-                    (rel_type_name
-                      (schema_name
-                        (identifier))))))
+              (relationship_detail
+                (relationship_types
+                  (rel_type_name
+                    (schema_name
+                      (identifier)))))
               (node_pattern
                 (variable
                   (identifier))))))))))
