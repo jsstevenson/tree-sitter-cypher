@@ -2,10 +2,18 @@ module.exports = grammar({
   name: 'cypher',
   rules: {
     cypher: $ => seq($.query, optional(";")),
-    query: $ => seq(
-      $.reading_clause,
-      $.return
+    query: $ => choice(
+      seq(
+        $.reading_clause,
+        $.return
+      ),
+      seq(
+        repeat($.reading_clause),
+        repeat1($.updating_clause),
+        optional($.return)
+      )
     ),
+
     reading_clause: $ => choice(
       $.match
     ),
@@ -13,7 +21,6 @@ module.exports = grammar({
       "MATCH",
       $.pattern
     ),
-
     pattern: $ => $.pattern_element,
     pattern_element: $ => choice(
       seq(
@@ -54,8 +61,41 @@ module.exports = grammar({
     node_pattern: $ => seq(
       "(",
       optional($.variable),
+      optional($.node_labels),
+      optional($.properties),
       ")"
     ),
+    node_labels: $ => seq($.node_label, repeat($.node_label)),
+    node_label: $ => seq(":", $.label_name),
+    label_name: $ => $.schema_name,
+    properties: $ => choice(
+      $.map_literal,
+      // $.parameter
+    ),
+    map_literal: $ => seq(
+      "{",
+      optional(
+        seq(
+          $.property_key_name,
+          ":",
+          $.expression,
+          repeat(
+            seq(
+              ",",
+              $.property_key_name,
+              ":",
+              $.expression
+            )
+          )
+        )
+      ),
+      "}"
+    ),
+
+    updating_clause: $ => choice(
+      $.create
+    ),
+    create: $ => seq("CREATE", $.pattern),
 
     return: $ => seq(
       "RETURN",
@@ -81,7 +121,18 @@ module.exports = grammar({
     property_key_name: $ => $.schema_name,
     schema_name: $ => $.symbolic_name,
     atom: $ => choice(
+      $.literal,
       $.variable
+    ),
+    literal: $ => choice(
+      $.string_literal
+    ),
+    string_literal: $ => choice(
+      seq(
+        "'",
+        /[^'\\]*/,
+        "'"
+      ),
     ),
     variable: $ => $.symbolic_name,
     symbolic_name: $ => $.identifier,
