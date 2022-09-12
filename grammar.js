@@ -19,9 +19,9 @@ module.exports = grammar({
     ),
     match: $ => seq(
       "MATCH",
-      $.pattern
+      $._pattern
     ),
-    pattern: $ => $.pattern_element,
+    _pattern: $ => $.pattern_element,
     pattern_element: $ => choice(
       seq(
         $.node_pattern,
@@ -95,7 +95,7 @@ module.exports = grammar({
     _updating_clause: $ => choice(
       $.create
     ),
-    create: $ => seq("CREATE", $.pattern),
+    create: $ => seq("CREATE", $._pattern),
 
     return: $ => seq(
       "RETURN",
