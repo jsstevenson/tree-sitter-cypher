@@ -12,8 +12,7 @@ RETURN n
           (pattern_element
             (node_pattern
               (variable
-                (symbolic_name
-                  (identifier))))))))
+                (identifier)))))))
   (return
     (projection_body
       (projection_items
@@ -22,8 +21,7 @@ RETURN n
             (property_or_labels_expression
               (atom
                 (variable
-                  (symbolic_name
-                    (identifier))))))))))))
+                  (identifier)))))))))))
 ==================
 Basic node relationship pattern and node property namespace
 ==================
@@ -38,20 +36,17 @@ RETURN user.name, friend.name
           (pattern_element
             (node_pattern
               (variable
-                (symbolic_name
-                  (identifier))))
+                (identifier)))
             (pattern_element_chain
               (relationship_pattern
                 (relationship_detail
                   (relationship_types
                     (rel_type_name
                       (schema_name
-                        (symbolic_name
-                          (identifier)))))))
+                        (identifier))))))
               (node_pattern
                 (variable
-                  (symbolic_name
-                    (identifier)))))))))
+                  (identifier))))))))
   (return
     (projection_body
       (projection_items
@@ -60,25 +55,21 @@ RETURN user.name, friend.name
             (property_or_labels_expression
               (atom
                 (variable
-                  (symbolic_name
-                    (identifier))))
+                  (identifier)))
               (property_lookup
                 (property_key_name
                   (schema_name
-                    (symbolic_name
-                      (identifier))))))))
+                    (identifier)))))))
         (projection_item
           (expression
             (property_or_labels_expression
               (atom
                 (variable
-                  (symbolic_name
-                    (identifier))))
+                  (identifier)))
               (property_lookup
                 (property_key_name
                   (schema_name
-                    (symbolic_name
-                      (identifier)))))))))))))
+                    (identifier))))))))))))
 ==================
 Create statement and node match properties
 ==================
@@ -95,20 +86,17 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
           (pattern_element
             (node_pattern
               (variable
-                (symbolic_name
-                  (identifier)))
+                (identifier))
               (node_labels
                 (node_label
                   (label_name
                     (schema_name
-                      (symbolic_name
-                        (identifier))))))
+                      (identifier)))))
               (properties
                 (map_literal
                   (property_key_name
                     (schema_name
-                      (symbolic_name
-                        (identifier))))
+                      (identifier)))
                   (expression
                     (property_or_labels_expression
                       (atom
@@ -120,20 +108,17 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
           (pattern_element
             (node_pattern
               (variable
-                (symbolic_name
-                  (identifier)))
+                (identifier))
               (node_labels
                 (node_label
                   (label_name
                     (schema_name
-                      (symbolic_name
-                        (identifier))))))
+                      (identifier)))))
               (properties
                 (map_literal
                   (property_key_name
                     (schema_name
-                      (symbolic_name
-                        (identifier))))
+                      (identifier)))
                   (expression
                     (property_or_labels_expression
                       (atom
@@ -145,20 +130,17 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
           (pattern_element
             (node_pattern
               (variable
-                (symbolic_name
-                  (identifier)))
+                (identifier))
               (node_labels
                 (node_label
                   (label_name
                     (schema_name
-                      (symbolic_name
-                        (identifier))))))
+                      (identifier)))))
               (properties
                 (map_literal
                   (property_key_name
                     (schema_name
-                      (symbolic_name
-                        (identifier))))
+                      (identifier)))
                   (expression
                     (property_or_labels_expression
                       (atom
@@ -170,7 +152,16 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
           (pattern_element
             (node_pattern
               (variable
-                (symbolic_name
+                (identifier)))
+            (pattern_element_chain
+              (relationship_pattern
+                (relationship_detail
+                  (relationship_types
+                    (rel_type_name
+                      (schema_name
+                        (identifier))))))
+              (node_pattern
+                (variable
                   (identifier))))
             (pattern_element_chain
               (relationship_pattern
@@ -178,21 +169,7 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
                   (relationship_types
                     (rel_type_name
                       (schema_name
-                        (symbolic_name
-                          (identifier)))))))
+                        (identifier))))))
               (node_pattern
                 (variable
-                  (symbolic_name
-                    (identifier)))))
-            (pattern_element_chain
-              (relationship_pattern
-                (relationship_detail
-                  (relationship_types
-                    (rel_type_name
-                      (schema_name
-                        (symbolic_name
-                          (identifier)))))))
-              (node_pattern
-                (variable
-                  (symbolic_name
-                    (identifier)))))))))))
+                  (identifier))))))))))

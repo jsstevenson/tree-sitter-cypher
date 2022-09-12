@@ -119,7 +119,7 @@ module.exports = grammar({
     ),
     property_lookup: $ => seq(".", $.property_key_name),
     property_key_name: $ => $.schema_name,
-    schema_name: $ => $.symbolic_name,
+    schema_name: $ => $._symbolic_name,
     atom: $ => choice(
       $.literal,
       $.variable
@@ -134,8 +134,8 @@ module.exports = grammar({
         "'"
       ),
     ),
-    variable: $ => $.symbolic_name,
-    symbolic_name: $ => $.identifier,
+    variable: $ => $._symbolic_name,
+    _symbolic_name: $ => $.identifier,
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
   }
 });
