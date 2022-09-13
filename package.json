@@ -1,0 +1,19 @@
+{
+  "name": "tree-sitter-cypher",
+  "version": "0.0.1",
+  "description": "cypher grammar for tree-sitter",
+  "main": "bindings/node",
+  "keywords": [
+    "parsing",
+    "incremental"
+  ],
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.6"
+  },
+  "scripts": {
+    "test": "tree-sitter test"
+  }
+}
