@@ -19,7 +19,8 @@ module.exports = grammar({
     ),
     match: $ => seq(
       "MATCH",
-      $._pattern
+      $._pattern,
+      optional($.where)
     ),
     _pattern: $ => $.pattern_element,
     pattern_element: $ => choice(
@@ -91,6 +92,7 @@ module.exports = grammar({
       ),
       "}"
     ),
+    where: $ => seq("WHERE", $.expression),
 
     _updating_clause: $ => choice(
       $.create
@@ -111,12 +113,12 @@ module.exports = grammar({
       $.expression
     ),
     expression: $ => choice(
-      $.property_or_labels_expression,
+      prec.left(1, seq($.atom, repeat($.property_lookup))),
     ),
-    property_or_labels_expression: $ => seq(
-      $.atom,
-      repeat($.property_lookup),
-    ),
+    // property_or_labels_expression: $ => seq(
+    //   $.atom,
+    //   repeat($.property_lookup),
+    // ),
     property_lookup: $ => seq(".", $.property_key_name),
     property_key_name: $ => $._schema_name,
     _schema_name: $ => $._symbolic_name,
