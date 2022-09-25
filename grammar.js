@@ -1,10 +1,10 @@
 module.exports = grammar({
   name: 'cypher',
   rules: {
-    cypher: $ => seq($.query, optional(";")),
-    query: $ => choice(
+    cypher: $ => seq($._query, optional(";")),
+    _query: $ => choice(
       seq(
-        $._reading_clause,
+        repeat($._reading_clause),
         $.return
       ),
       seq(
@@ -101,34 +101,31 @@ module.exports = grammar({
 
     return: $ => seq(
       "RETURN",
-      $.projection_body
+      seq($._projection_items)
     ),
-    projection_body: $ => seq(
-      $.projection_items
+    _projection_items: $ => choice(
+      seq($._projection_item, repeat(seq(",", $._projection_item)))
     ),
-    projection_items: $ => choice(
-      seq($.projection_item, repeat(seq(",", $.projection_item)))
-    ),
-    projection_item: $ => choice(
+    _projection_item: $ => choice(
       $.expression
     ),
     expression: $ => choice(
-      prec.left(1, seq($.atom, repeat($.property_lookup))),
+      seq($._atom, repeat($.property_lookup)),
+      prec.left(seq($.expression, /[+-]/, $.expression)),
+      prec.left(2, seq($.expression, /[\*\/%]/, $.expression))
     ),
-    // property_or_labels_expression: $ => seq(
-    //   $.atom,
-    //   repeat($.property_lookup),
-    // ),
     property_lookup: $ => seq(".", $.property_key_name),
     property_key_name: $ => $._schema_name,
     _schema_name: $ => $._symbolic_name,
-    atom: $ => choice(
-      $.literal,
+    _atom: $ => choice(
+      $._literal,
       $.variable
     ),
-    literal: $ => choice(
+    _literal: $ => choice(
+      $.decimal_integer_literal,
       $.string_literal
     ),
+    decimal_integer_literal: $ => /(0|[1-9][0-9]*)/,
     string_literal: $ => choice(
       seq(
         "'",
