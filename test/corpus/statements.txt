@@ -68,14 +68,13 @@ RETURN user.name, friend.name
       (node_pattern
         (variable
           (identifier)))
-      (pattern_element_chain
-        (relationship_detail
-          (relationship_types
-            (rel_type_name
-              (identifier))))
-        (node_pattern
-          (variable
-            (identifier))))))
+      (relationship_detail
+        (relationship_types
+          (rel_type_name
+            (identifier))))
+      (node_pattern
+        (variable
+          (identifier)))))
   (return
     (expression
       (variable
@@ -148,19 +147,66 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
       (node_pattern
         (variable
           (identifier)))
-      (pattern_element_chain
-        (relationship_detail
-          (relationship_types
-            (rel_type_name
-              (identifier))))
-        (node_pattern
-          (variable
+      (relationship_detail
+        (relationship_types
+          (rel_type_name
             (identifier))))
-      (pattern_element_chain
-        (relationship_detail
-          (relationship_types
-            (rel_type_name
-              (identifier))))
-        (node_pattern
+      (node_pattern
+        (variable
+          (identifier)))
+      (relationship_detail
+        (relationship_types
+          (rel_type_name
+            (identifier))))
+      (node_pattern
+        (variable
+          (identifier))))))
+==================
+IN operator
+==================
+MATCH (user)-[:FRIEND]->(follower)
+WHERE user.name IN ['Joe', 'John', 'Sara'] AND follower.name =~ 'S.*'
+RETURN user
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier)))
+      (relationship_detail
+        (relationship_types
+          (rel_type_name
+            (identifier))))
+      (node_pattern
+        (variable
+          (identifier))))
+    (where
+      (expression
+        (expression
           (variable
-            (identifier)))))))
+            (identifier))
+          (property_lookup
+            (property_key_name
+              (identifier)))
+          (list
+            (expression
+              (string_literal))
+            (expression
+              (string_literal))
+            (expression
+              (string_literal))))
+        (expression
+          (expression
+            (variable
+              (identifier))
+            (property_lookup
+              (property_key_name
+                (identifier))))
+          (expression
+            (string_literal))))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
+

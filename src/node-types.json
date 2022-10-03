@@ -54,6 +54,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "property_lookup",
           "named": true
         },
@@ -78,6 +82,21 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -188,25 +207,6 @@
         },
         {
           "type": "pattern_element",
-          "named": true
-        },
-        {
-          "type": "pattern_element_chain",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pattern_element_chain",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "node_pattern",
           "named": true
         },
         {
@@ -401,11 +401,31 @@
     "named": false
   },
   {
+    "type": "=~",
+    "named": false
+  },
+  {
+    "type": "AND",
+    "named": false
+  },
+  {
     "type": "CREATE",
     "named": false
   },
   {
+    "type": "IN",
+    "named": false
+  },
+  {
     "type": "MATCH",
+    "named": false
+  },
+  {
+    "type": "NOT",
+    "named": false
+  },
+  {
+    "type": "OR",
     "named": false
   },
   {
@@ -414,6 +434,10 @@
   },
   {
     "type": "WHERE",
+    "named": false
+  },
+  {
+    "type": "XOR",
     "named": false
   },
   {

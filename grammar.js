@@ -26,7 +26,7 @@ module.exports = grammar({
     pattern_element: $ => choice(
       seq(
         $.node_pattern,
-        repeat($.pattern_element_chain),
+        repeat($._pattern_element_chain),
       ),
       seq(
         "(",
@@ -34,7 +34,7 @@ module.exports = grammar({
         ")"
       )
     ),
-    pattern_element_chain: $ => seq($._relationship_pattern, $.node_pattern),
+    _pattern_element_chain: $ => seq($._relationship_pattern, $.node_pattern),
     _relationship_pattern: $ => choice(
       seq("<-", optional($.relationship_detail), "->"),
       seq("<-", optional($.relationship_detail), "-"),
@@ -110,9 +110,32 @@ module.exports = grammar({
       $.expression
     ),
     expression: $ => choice(
+      seq(
+        $._atom,
+        repeat($.property_lookup),
+        "IN",
+        $.list
+      ),
+      prec.left(2, seq($.expression, "AND", $.expression)),
       seq($._atom, repeat($.property_lookup)),
       prec.left(seq($.expression, /[+-]/, $.expression)),
-      prec.left(2, seq($.expression, /[\*\/%]/, $.expression))
+      prec.left(2, seq($.expression, /[\*\/%]/, $.expression)),
+      prec.left(seq($.expression, "AND", $.expression)),
+      prec.left(2, seq($.expression, "XOR", $.expression)),
+      prec.left(3, seq($.expression, "OR", $.expression)),
+      prec.left(seq("NOT", $.expression)),
+      prec.left(4, seq($.expression, "=~", $.expression))
+    ),
+    list: $ => seq(
+      "[",
+      $.expression,
+      repeat(
+        seq(
+          ",",
+          $.expression
+        )
+      ),
+      "]"
     ),
     property_lookup: $ => seq(".", $.property_key_name),
     property_key_name: $ => $._schema_name,
