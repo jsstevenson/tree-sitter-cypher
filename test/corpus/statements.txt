@@ -236,3 +236,20 @@ RETURN count(p.twitter);
           (property_lookup
             (property_key_name
               (identifier))))))))
+==================
+Multi argument function
+==================
+RETURN replace("hello", "l", "w")
+---
+(cypher
+  (return
+    (expression
+      (function_invocation
+        (function_name
+          (identifier))
+        (expression
+          (string_literal))
+        (expression
+          (string_literal))
+        (expression
+          (string_literal))))))

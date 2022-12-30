@@ -173,6 +173,11 @@ module.exports = grammar({
         /[^'\\]*/,
         "'"
       ),
+      seq(
+        '"',
+        /[^"\\]*/,
+        '"'
+      )
     ),
     variable: $ => $._symbolic_name,
     _symbolic_name: $ => $.identifier,
