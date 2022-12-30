@@ -142,7 +142,25 @@ module.exports = grammar({
     _schema_name: $ => $._symbolic_name,
     _atom: $ => choice(
       $._literal,
-      $.variable
+      $.variable,
+      $.function_invocation
+    ),
+    function_invocation: $ => seq(
+      $.function_name,
+      "(",
+      // optional DISTINCT
+      // make args optional
+      $.expression,
+      repeat(
+        seq(
+          ",",
+          $.expression
+        )
+      ),
+      ")"
+    ),
+    function_name: $ => seq(
+      $._symbolic_name
     ),
     _literal: $ => choice(
       $.decimal_integer_literal,

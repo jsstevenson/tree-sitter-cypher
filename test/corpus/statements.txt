@@ -209,4 +209,30 @@ RETURN user
     (expression
       (variable
         (identifier)))))
-
+==================
+Function call
+==================
+MATCH (p:Person)
+RETURN count(p.twitter);
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier))
+      (node_labels
+        (node_label
+          (label_name
+            (identifier)))))))
+  (return
+    (expression
+      (function_invocation
+        (function_name
+          (identifier))
+        (expression
+          (variable
+            (identifier))
+          (property_lookup
+            (property_key_name
+              (identifier))))))))
