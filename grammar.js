@@ -120,11 +120,12 @@ module.exports = grammar({
       seq($._atom, repeat($.property_lookup)),
       prec.left(seq($.expression, /[+-]/, $.expression)),
       prec.left(2, seq($.expression, /[\*\/%]/, $.expression)),
+      prec.left(seq("NOT", $.expression)),
       prec.left(seq($.expression, "AND", $.expression)),
       prec.left(2, seq($.expression, "XOR", $.expression)),
       prec.left(3, seq($.expression, "OR", $.expression)),
-      prec.left(seq("NOT", $.expression)),
-      prec.left(4, seq($.expression, "=~", $.expression))
+      prec.left(4, seq($.expression, "=~", $.expression)),
+      prec.left(4, seq($.expression, "=", $.expression))
     ),
     list: $ => seq(
       "[",
@@ -143,7 +144,12 @@ module.exports = grammar({
     _atom: $ => choice(
       $._literal,
       $.variable,
-      $.function_invocation
+      $.function_invocation,
+      $.parameter,
+    ),
+    parameter: $ => seq(
+      "$",
+      $._symbolic_name
     ),
     function_invocation: $ => seq(
       $.function_name,

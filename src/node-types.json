@@ -62,6 +62,10 @@
           "named": true
         },
         {
+          "type": "parameter",
+          "named": true
+        },
+        {
           "type": "property_lookup",
           "named": true
         },
@@ -226,6 +230,21 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -403,6 +422,10 @@
     "named": false
   },
   {
+    "type": "$",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -440,6 +463,10 @@
   },
   {
     "type": "<-",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {

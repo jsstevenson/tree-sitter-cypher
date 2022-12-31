@@ -253,3 +253,35 @@ RETURN replace("hello", "l", "w")
           (string_literal))
         (expression
           (string_literal))))))
+==================
+Parameters
+==================
+MATCH (n:Person)
+WHERE n.name = $name
+RETURN n
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier))
+        (node_labels
+          (node_label
+            (label_name
+              (identifier))))))
+  (where
+    (expression
+      (expression
+        (variable
+          (identifier))
+        (property_lookup
+          (property_key_name
+            (identifier))))
+      (expression
+        (parameter
+          (identifier))))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
