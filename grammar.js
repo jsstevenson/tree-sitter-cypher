@@ -18,6 +18,7 @@ module.exports = grammar({
       $.match
     ),
     match: $ => seq(
+      optional("OPTIONAL"),
       "MATCH",
       $._pattern,
       optional($.where)

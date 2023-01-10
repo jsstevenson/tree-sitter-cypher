@@ -285,3 +285,38 @@ RETURN n
     (expression
       (variable
         (identifier)))))
+==================
+Optional match
+==================
+MATCH (a:Movie {title: 'Wall Street'})
+OPTIONAL MATCH (a)-->(x)
+RETURN x
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier))
+        (node_labels
+          (node_label
+            (label_name
+              (identifier))))
+        (properties
+          (map_literal
+            (property_key_name
+              (identifier))
+            (expression
+              (string_literal)))))))
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier)))
+      (node_pattern
+        (variable
+          (identifier)))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
