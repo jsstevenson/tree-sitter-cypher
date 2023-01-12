@@ -67,8 +67,7 @@ module.exports = grammar({
       optional($.properties),
       ")"
     ),
-    node_labels: $ => seq($.node_label, repeat($.node_label)),
-    node_label: $ => seq(":", $.label_name),
+    node_labels: $ => seq(":", $.label_name, repeat(seq("&", $.label_name))),
     label_name: $ => $._schema_name,
     properties: $ => choice(
       $.map_literal,

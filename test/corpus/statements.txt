@@ -103,9 +103,8 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
         (variable
           (identifier))
         (node_labels
-          (node_label
-            (label_name
-              (identifier))))
+          (label_name
+            (identifier)))
         (properties
           (map_literal
             (property_key_name
@@ -118,9 +117,8 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
         (variable
           (identifier))
         (node_labels
-          (node_label
-            (label_name
-              (identifier))))
+          (label_name
+            (identifier)))
         (properties
           (map_literal
             (property_key_name
@@ -133,9 +131,8 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
         (variable
           (identifier))
         (node_labels
-          (node_label
-            (label_name
-              (identifier))))
+          (label_name
+            (identifier)))
         (properties
           (map_literal
             (property_key_name
@@ -222,9 +219,8 @@ RETURN count(p.twitter);
         (variable
           (identifier))
       (node_labels
-        (node_label
-          (label_name
-            (identifier)))))))
+        (label_name
+          (identifier))))))
   (return
     (expression
       (function_invocation
@@ -267,9 +263,8 @@ RETURN n
         (variable
           (identifier))
         (node_labels
-          (node_label
-            (label_name
-              (identifier))))))
+          (label_name
+            (identifier)))))
   (where
     (expression
       (expression
@@ -299,9 +294,8 @@ RETURN x
         (variable
           (identifier))
         (node_labels
-          (node_label
-            (label_name
-              (identifier))))
+          (label_name
+            (identifier)))
         (properties
           (map_literal
             (property_key_name
@@ -316,6 +310,27 @@ RETURN x
       (node_pattern
         (variable
           (identifier)))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
+==================
+Multiple labels
+==================
+MATCH (a:User&Admin)
+RETURN a
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier))
+        (node_labels
+          (label_name
+            (identifier))
+          (label_name
+            (identifier))))))
   (return
     (expression
       (variable
