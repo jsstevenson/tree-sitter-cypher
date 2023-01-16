@@ -410,4 +410,22 @@ RETURN n
     (expression
       (variable
         (identifier)))))
+==================
+Comments
+==================
+MATCH /* sdlfkdsf */ (n)
+RETURN n // comment
+---
+(cypher
+  (match
+    (comment)
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier)))))
+  (return
+    (expression
+      (variable
+        (identifier))))
+  (comment))
 

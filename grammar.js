@@ -1,7 +1,19 @@
 module.exports = grammar({
   name: 'cypher',
+  extras: $ => [
+    $.comment,
+    /[\s\p{Zs}\uFEFF\u2060\u200B]/,
+  ],
   rules: {
     cypher: $ => seq($._query, optional(";")),
+    comment: $ => token(choice(
+      seq('//', /.*/),
+      seq(
+        '/*',
+        /[^*]*\*+([^/*][^*]*\*+)*/,
+        '/'
+      )
+    )),
     _query: $ => choice(
       seq(
         repeat($._reading_clause),
