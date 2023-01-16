@@ -182,10 +182,13 @@ module.exports = grammar({
       $._symbolic_name
     ),
     _literal: $ => choice(
-      $.decimal_integer_literal,
+      $.number_literal,
       $.string_literal
     ),
-    decimal_integer_literal: $ => /(0|[1-9][0-9]*)/,
+    number_literal: $ => choice(
+      $._decimal_integer_literal,
+    ),
+    _decimal_integer_literal: $ => /(0|[1-9][0-9]*)/,
     string_literal: $ => choice(
       seq(
         "'",

@@ -64,10 +64,6 @@
           "named": true
         },
         {
-          "type": "decimal_integer_literal",
-          "named": true
-        },
-        {
           "type": "expression",
           "named": true
         },
@@ -77,6 +73,10 @@
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "number_literal",
           "named": true
         },
         {
@@ -237,6 +237,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "number_literal",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "parameter",
@@ -547,10 +552,6 @@
   {
     "type": "]",
     "named": false
-  },
-  {
-    "type": "decimal_integer_literal",
-    "named": true
   },
   {
     "type": "identifier",

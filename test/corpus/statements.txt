@@ -21,9 +21,9 @@ RETURN a + 3 - 5
           (variable
             (identifier)))
         (expression
-            (decimal_integer_literal)))
+            (number_literal)))
       (expression
-        (decimal_integer_literal)))))
+        (number_literal)))))
 ==================
 Basic multiplication
 ==================
@@ -33,13 +33,13 @@ RETURN 1 + a * 4
   (return
     (expression
       (expression
-        (decimal_integer_literal))
+        (number_literal))
       (expression
         (expression
           (variable
             (identifier)))
         (expression
-          (decimal_integer_literal))))))
+          (number_literal))))))
 ==================
 Basic node match
 ==================
@@ -355,7 +355,7 @@ RETURN n
       (expression
         (expression
           (expression
-            (decimal_integer_literal))
+            (number_literal))
           (comparison_operator)
       (expression
           (variable
@@ -373,7 +373,7 @@ RETURN n
               (identifier))))
         (comparison_operator)
         (expression
-          (decimal_integer_literal))))))
+          (number_literal))))))
   (return
     (expression
       (variable
@@ -395,7 +395,7 @@ RETURN n
       (expression
         (expression
           (expression
-            (decimal_integer_literal))
+            (number_literal))
         (comparison_operator)
         (expression
           (variable
@@ -405,7 +405,7 @@ RETURN n
               (identifier)))))
         (comparison_operator)
         (expression
-          (decimal_integer_literal)))))
+          (number_literal)))))
   (return
     (expression
       (variable

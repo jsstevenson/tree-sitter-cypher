@@ -942,7 +942,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "decimal_integer_literal"
+          "name": "number_literal"
         },
         {
           "type": "SYMBOL",
@@ -950,7 +950,16 @@
         }
       ]
     },
-    "decimal_integer_literal": {
+    "number_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_decimal_integer_literal"
+        }
+      ]
+    },
+    "_decimal_integer_literal": {
       "type": "PATTERN",
       "value": "(0|[1-9][0-9]*)"
     },
