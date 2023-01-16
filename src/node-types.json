@@ -14,11 +14,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "pattern_element",
+          "type": "node_pattern",
+          "named": true
+        },
+        {
+          "type": "relationship_detail",
           "named": true
         }
       ]
@@ -187,10 +191,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "pattern_element",
+          "type": "node_pattern",
+          "named": true
+        },
+        {
+          "type": "relationship_detail",
           "named": true
         },
         {
@@ -253,29 +261,6 @@
       "types": [
         {
           "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pattern_element",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "node_pattern",
-          "named": true
-        },
-        {
-          "type": "pattern_element",
-          "named": true
-        },
-        {
-          "type": "relationship_detail",
           "named": true
         }
       ]
@@ -511,6 +496,10 @@
   },
   {
     "type": "CREATE",
+    "named": false
+  },
+  {
+    "type": "DISTINCT",
     "named": false
   },
   {

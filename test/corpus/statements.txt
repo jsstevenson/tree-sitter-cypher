@@ -48,10 +48,9 @@ RETURN n
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier)))))
+    (node_pattern
+      (variable
+        (identifier))))
   (return
     (expression
       (variable
@@ -64,17 +63,16 @@ RETURN user.name, friend.name
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier)))
-      (relationship_detail
-        (relationship_types
-          (rel_type_name
-            (identifier))))
-      (node_pattern
-        (variable
-          (identifier)))))
+    (node_pattern
+      (variable
+        (identifier)))
+    (relationship_detail
+      (relationship_types
+        (rel_type_name
+          (identifier))))
+    (node_pattern
+      (variable
+        (identifier))))
   (return
     (expression
       (variable
@@ -98,66 +96,62 @@ CREATE (john)-[:FRIEND]->(sara)-[:FRIEND]->(maria)
 ---
 (cypher
   (create
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))
-        (node_labels
-          (label_name
-            (identifier)))
-        (properties
-          (map_literal
-            (property_key_name
-              (identifier))
-            (expression
-              (string_literal)))))))
-  (create
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))
-        (node_labels
-          (label_name
-            (identifier)))
-        (properties
-          (map_literal
-            (property_key_name
-              (identifier))
-            (expression
-              (string_literal)))))))
-  (create
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))
-        (node_labels
-          (label_name
-            (identifier)))
-        (properties
-          (map_literal
-            (property_key_name
-              (identifier))
-            (expression
-              (string_literal)))))))
-  (create
-    (pattern_element
-      (node_pattern
-        (variable
+    (node_pattern
+      (variable
+        (identifier))
+      (node_labels
+        (label_name
           (identifier)))
-      (relationship_detail
-        (relationship_types
-          (rel_type_name
-            (identifier))))
-      (node_pattern
-        (variable
+      (properties
+        (map_literal
+          (property_key_name
+            (identifier))
+          (expression
+            (string_literal))))))
+  (create
+    (node_pattern
+      (variable
+        (identifier))
+      (node_labels
+        (label_name
           (identifier)))
-      (relationship_detail
-        (relationship_types
-          (rel_type_name
-            (identifier))))
-      (node_pattern
-        (variable
-          (identifier))))))
+      (properties
+        (map_literal
+          (property_key_name
+            (identifier))
+          (expression
+            (string_literal))))))
+  (create
+    (node_pattern
+      (variable
+        (identifier))
+      (node_labels
+        (label_name
+          (identifier)))
+      (properties
+        (map_literal
+          (property_key_name
+            (identifier))
+          (expression
+            (string_literal))))))
+  (create
+    (node_pattern
+      (variable
+        (identifier)))
+    (relationship_detail
+      (relationship_types
+        (rel_type_name
+          (identifier))))
+    (node_pattern
+      (variable
+        (identifier)))
+    (relationship_detail
+      (relationship_types
+        (rel_type_name
+          (identifier))))
+    (node_pattern
+      (variable
+        (identifier)))))
 ==================
 IN operator
 ==================
@@ -167,17 +161,16 @@ RETURN user
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier)))
-      (relationship_detail
-        (relationship_types
-          (rel_type_name
-            (identifier))))
-      (node_pattern
-        (variable
+    (node_pattern
+      (variable
+        (identifier)))
+    (relationship_detail
+      (relationship_types
+        (rel_type_name
           (identifier))))
+    (node_pattern
+      (variable
+        (identifier)))
     (where
       (expression
         (expression
@@ -216,13 +209,12 @@ RETURN count(p.twitter);
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))
-      (node_labels
-        (label_name
-          (identifier))))))
+    (node_pattern
+      (variable
+        (identifier))
+    (node_labels
+      (label_name
+        (identifier)))))
   (return
     (expression
       (function_invocation
@@ -260,13 +252,12 @@ RETURN n
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))
-        (node_labels
-          (label_name
-            (identifier)))))
+    (node_pattern
+      (variable
+        (identifier))
+      (node_labels
+        (label_name
+          (identifier))))
   (where
     (expression
       (expression
@@ -292,27 +283,25 @@ RETURN x
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))
-        (node_labels
-          (label_name
-            (identifier)))
-        (properties
-          (map_literal
-            (property_key_name
-              (identifier))
-            (expression
-              (string_literal)))))))
-  (match
-    (pattern_element
-      (node_pattern
-        (variable
+    (node_pattern
+      (variable
+        (identifier))
+      (node_labels
+        (label_name
           (identifier)))
-      (node_pattern
-        (variable
-          (identifier)))))
+      (properties
+        (map_literal
+          (property_key_name
+            (identifier))
+          (expression
+            (string_literal))))))
+  (match
+    (node_pattern
+      (variable
+        (identifier)))
+    (node_pattern
+      (variable
+        (identifier))))
   (return
     (expression
       (variable
@@ -325,15 +314,14 @@ RETURN a
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
+    (node_pattern
+      (variable
+        (identifier))
+      (node_labels
+        (label_name
           (identifier))
-        (node_labels
-          (label_name
-            (identifier))
-          (label_name
-            (identifier))))))
+        (label_name
+          (identifier)))))
   (return
     (expression
       (variable
@@ -347,10 +335,9 @@ RETURN n
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))))
+    (node_pattern
+      (variable
+        (identifier)))
     (where
       (expression
         (expression
@@ -387,10 +374,9 @@ RETURN n
 ---
 (cypher
   (match
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier))))
+    (node_pattern
+      (variable
+        (identifier)))
     (where
       (expression
         (expression
@@ -419,13 +405,30 @@ RETURN n // comment
 (cypher
   (match
     (comment)
-    (pattern_element
-      (node_pattern
-        (variable
-          (identifier)))))
+    (node_pattern
+      (variable
+        (identifier))))
   (return
     (expression
       (variable
         (identifier))))
   (comment))
+==================
+Distinct
+==================
+MATCH (a)-->(b)
+RETURN DISTINCT b
+---
+(cypher
+  (match
+    (node_pattern
+      (variable
+        (identifier)))
+    (node_pattern
+      (variable
+        (identifier))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
 

@@ -160,9 +160,9 @@
     },
     "_pattern": {
       "type": "SYMBOL",
-      "name": "pattern_element"
+      "name": "_pattern_element"
     },
-    "pattern_element": {
+    "_pattern_element": {
       "type": "CHOICE",
       "members": [
         {
@@ -190,7 +190,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pattern_element"
+              "name": "_pattern_element"
             },
             {
               "type": "STRING",
@@ -594,6 +594,18 @@
         {
           "type": "STRING",
           "value": "RETURN"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "DISTINCT"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SEQ",

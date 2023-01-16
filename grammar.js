@@ -35,15 +35,15 @@ module.exports = grammar({
       $._pattern,
       optional($.where)
     ),
-    _pattern: $ => $.pattern_element,
-    pattern_element: $ => choice(
+    _pattern: $ => $._pattern_element,
+    _pattern_element: $ => choice(
       seq(
         $.node_pattern,
         repeat($._pattern_element_chain),
       ),
       seq(
         "(",
-        $.pattern_element,
+        $._pattern_element,
         ")"
       )
     ),
@@ -113,6 +113,7 @@ module.exports = grammar({
 
     return: $ => seq(
       "RETURN",
+      optional("DISTINCT"),
       seq($._projection_items)
     ),
     _projection_items: $ => choice(
