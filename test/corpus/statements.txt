@@ -1,4 +1,4 @@
-=================
+==================
 Basic return
 ==================
 RETURN a;
@@ -193,6 +193,7 @@ RETURN user
               (string_literal))
             (expression
               (string_literal))))
+        (boolean_algebreic_operator)
         (expression
           (expression
             (variable
@@ -200,6 +201,7 @@ RETURN user
             (property_lookup
               (property_key_name
                 (identifier))))
+          (comparison_operator)
           (expression
             (string_literal))))))
   (return
@@ -273,6 +275,7 @@ RETURN n
         (property_lookup
           (property_key_name
             (identifier))))
+      (comparison_operator)
       (expression
         (parameter
           (identifier))))))
@@ -335,3 +338,76 @@ RETURN a
     (expression
       (variable
         (identifier)))))
+==================
+Booleans
+==================
+MATCH (n)
+WHERE 21 < n.age AND n.age <= 30
+RETURN n
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier))))
+    (where
+      (expression
+        (expression
+          (expression
+            (decimal_integer_literal))
+          (comparison_operator)
+      (expression
+          (variable
+            (identifier))
+          (property_lookup
+            (property_key_name
+              (identifier)))))
+      (boolean_algebreic_operator)
+      (expression
+        (expression
+          (variable
+            (identifier))
+          (property_lookup
+            (property_key_name
+              (identifier))))
+        (comparison_operator)
+        (expression
+          (decimal_integer_literal))))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
+==================
+Booleans chained
+==================
+MATCH (n)
+WHERE 21 < n.age <= 30
+RETURN n
+---
+(cypher
+  (match
+    (pattern_element
+      (node_pattern
+        (variable
+          (identifier))))
+    (where
+      (expression
+        (expression
+          (expression
+            (decimal_integer_literal))
+        (comparison_operator)
+        (expression
+          (variable
+            (identifier))
+          (property_lookup
+            (property_key_name
+              (identifier)))))
+        (comparison_operator)
+        (expression
+          (decimal_integer_literal)))))
+  (return
+    (expression
+      (variable
+        (identifier)))))
+

@@ -1,5 +1,15 @@
 [
   {
+    "type": "boolean_algebreic_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comparison_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "create",
     "named": true,
     "fields": {},
@@ -45,6 +55,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "boolean_algebreic_operator",
+          "named": true
+        },
+        {
+          "type": "comparison_operator",
+          "named": true
+        },
         {
           "type": "decimal_integer_literal",
           "named": true
@@ -451,7 +469,19 @@
     "named": false
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
     "type": "<-",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "<>",
     "named": false
   },
   {
@@ -460,6 +490,14 @@
   },
   {
     "type": "=~",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
     "named": false
   },
   {

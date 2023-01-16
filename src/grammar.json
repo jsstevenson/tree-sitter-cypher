@@ -645,8 +645,8 @@
                 "name": "expression"
               },
               {
-                "type": "STRING",
-                "value": "AND"
+                "type": "SYMBOL",
+                "name": "boolean_algebreic_operator"
               },
               {
                 "type": "SYMBOL",
@@ -732,69 +732,6 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              },
-              {
-                "type": "STRING",
-                "value": "AND"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            ]
-          }
-        },
-        {
-          "type": "PREC_LEFT",
-          "value": 2,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              },
-              {
-                "type": "STRING",
-                "value": "XOR"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            ]
-          }
-        },
-        {
-          "type": "PREC_LEFT",
-          "value": 3,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              },
-              {
-                "type": "STRING",
-                "value": "OR"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            ]
-          }
-        },
-        {
-          "type": "PREC_LEFT",
           "value": 4,
           "content": {
             "type": "SEQ",
@@ -804,8 +741,8 @@
                 "name": "expression"
               },
               {
-                "type": "STRING",
-                "value": "=~"
+                "type": "SYMBOL",
+                "name": "comparison_operator"
               },
               {
                 "type": "SYMBOL",
@@ -813,27 +750,56 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "boolean_algebreic_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "AND"
         },
         {
-          "type": "PREC_LEFT",
-          "value": 4,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              },
-              {
-                "type": "STRING",
-                "value": "="
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            ]
-          }
+          "type": "STRING",
+          "value": "XOR"
+        },
+        {
+          "type": "STRING",
+          "value": "OR"
+        }
+      ]
+    },
+    "comparison_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "=~"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "<>"
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "STRING",
+          "value": "<="
+        },
+        {
+          "type": "STRING",
+          "value": ">="
         }
       ]
     },

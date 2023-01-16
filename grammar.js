@@ -116,16 +116,29 @@ module.exports = grammar({
         "IN",
         $.list
       ),
-      prec.left(2, seq($.expression, "AND", $.expression)),
+      prec.left(2, seq($.expression, $.boolean_algebreic_operator, $.expression)),
       seq($._atom, repeat($.property_lookup)),
       prec.left(seq($.expression, /[+-]/, $.expression)),
       prec.left(2, seq($.expression, /[\*\/%]/, $.expression)),
       prec.left(seq("NOT", $.expression)),
-      prec.left(seq($.expression, "AND", $.expression)),
-      prec.left(2, seq($.expression, "XOR", $.expression)),
-      prec.left(3, seq($.expression, "OR", $.expression)),
-      prec.left(4, seq($.expression, "=~", $.expression)),
-      prec.left(4, seq($.expression, "=", $.expression))
+      // prec.left(seq($.expression, "AND", $.expression)),
+      // prec.left(2, seq($.expression, "XOR", $.expression)),
+      // prec.left(3, seq($.expression, "OR", $.expression)),
+      prec.left(4, seq($.expression, $.comparison_operator, $.expression)),
+    ),
+    boolean_algebreic_operator: $ => choice(
+      "AND",
+      "XOR",
+      "OR",
+    ),
+    comparison_operator: $ => choice(
+      "=~",
+      "=",
+      "<>",
+      "<",
+      ">",
+      "<=",
+      ">="
     ),
     list: $ => seq(
       "[",
